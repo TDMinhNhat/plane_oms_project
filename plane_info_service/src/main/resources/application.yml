@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: plane_info_service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/plane_info_db
+    username: postgres
+    password: 123456789
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    driver-class-name: org.postgresql.Driver
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+server:
+  port: 9001
