@@ -20,6 +20,12 @@ public abstract class AbstractEntityProperty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "description", length = 300)
+    private String description;
+
+    @Column(name = "delete_flag", nullable = false, columnDefinition = "DEFAULT FALSE")
+    private Boolean deleteFlag;
+
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
@@ -39,6 +45,10 @@ public abstract class AbstractEntityProperty {
     @Version
     @Column(name = "version", nullable = false)
     private Long version;
+
+    public AbstractEntityProperty(String description) {
+        this.description = description;
+    }
 
     @Override
     public boolean equals(Object o) {
