@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: review_service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/plane_review_service
+    username: postgres
+    password: 123456789
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    validate-migration-naming: true
+    validate-on-migrate: true
+server:
+  port: 9004
