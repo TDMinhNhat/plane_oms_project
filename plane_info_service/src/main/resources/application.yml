@@ -9,6 +9,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
   flyway:
     driver-class-name: org.postgresql.Driver
     locations: classpath:db/migration
