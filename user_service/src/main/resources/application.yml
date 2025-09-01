@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: user_service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/plane_user_service
+    username: postgres
+    password: 123456789
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    driver-class-name: org.postgresql.Driver
+    validate-migration-naming: true
+    validate-on-migrate: true
+server:
+  port: 9001
