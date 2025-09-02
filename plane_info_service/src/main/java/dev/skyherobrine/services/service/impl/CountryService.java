@@ -1,26 +1,29 @@
 package dev.skyherobrine.services.service.impl;
 
 import dev.skyherobrine.library.exceptions.NotFoundException;
+import dev.skyherobrine.library.models.PageResponse;
 import dev.skyherobrine.services.dto.CountryDto;
 import dev.skyherobrine.services.dto.filter.CountryFilterDto;
 import dev.skyherobrine.services.model.Country;
 import dev.skyherobrine.services.repository.CountryRepository;
 import dev.skyherobrine.services.service.ICountryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class CountryService implements ICountryService {
 
     private final CountryRepository countryRepository;
+
+    public CountryService(CountryRepository countryRepository) {
+        this.countryRepository = countryRepository;
+    }
 
     @Override
     public Country createOrUpdate(CountryDto countryDto) {
@@ -41,22 +44,19 @@ public class CountryService implements ICountryService {
     }
 
     @Override
-    public Collection<Country> findAll() {
-        return countryRepository.findAll();
-    }
-
-    @Override
-    public Collection<Country> findAll(Integer page, Integer size, Map<String, Sort.Direction> sorts, CountryFilterDto filter) {
+    public PageResponse<Country> findAll(CountryFilterDto filter) {
         List<Sort.Order> orders = new ArrayList<>();
-        sorts.forEach((property, direction) -> {
-            orders.add(new Sort.Order(direction, property));
+        filter.sorts().forEach((property, direction) -> {
+            orders.add(new Sort.Order(direction.getDirection(), property));
         });
-        return countryRepository.getAllCountries(
+        Page<Country> result = countryRepository.getAllCountries(
                 filter.countryId(),
                 filter.countryName(),
                 filter.deleteFlag(),
-                Pageable.ofSize(size).withPage(page),
+                Pageable.ofSize(filter.page().size()).withPage(filter.page().page()),
                 Sort.by(orders)
-        ).getContent();
+        );
+
+        return new PageResponse<>(result.getContent(), (long) result.getTotalPages(), result.getTotalElements(), (long) result.getNumber(), result.hasNext(), result.hasPrevious());
     }
 }
