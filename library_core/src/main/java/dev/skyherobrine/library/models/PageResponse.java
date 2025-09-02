@@ -1,17 +1,16 @@
 package dev.skyherobrine.library.models;
 
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.List;
 
-public class PageResponse extends PageImpl<Object> {
-
-    public PageResponse(List<Object> content, Pageable pageable, long total) {
-        super(content, pageable, total);
-    }
-
-    public PageResponse(List<Object> content) {
-        super(content);
-    }
+@Data
+@AllArgsConstructor
+public class PageResponse<S> {
+    private List<S> data;
+    private Integer totalPages;
+    private Integer totalElements;
+    private Boolean hasNext;
+    private Boolean hasPrevious;
 }
