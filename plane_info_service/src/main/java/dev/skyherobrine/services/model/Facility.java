@@ -16,15 +16,12 @@ public class Facility extends AbstractEntityProperty {
     @NonNull
     private String facilityName;
 
-    @Column(name = "facility_description", length = 300)
-    private String facilityDescription;
-
     @Column(name = "facility_icon_url", length = 300)
     private String facilityIconUrl;
 
-    public Facility(@NonNull String facilityName, String facilityDescription, String facilityIconUrl) {
+    public Facility(String description, @NonNull String facilityName, String facilityIconUrl) {
+        super(description);
         this.facilityName = facilityName;
-        this.facilityDescription = facilityDescription;
         this.facilityIconUrl = facilityIconUrl;
     }
 }

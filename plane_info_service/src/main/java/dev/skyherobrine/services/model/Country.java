@@ -9,6 +9,7 @@ import lombok.*;
 @Entity
 @Table(name = "countries")
 @Getter @Setter
+@Builder
 @NoArgsConstructor @RequiredArgsConstructor
 public class Country extends AbstractEntityProperty {
     @Column(name = "country_id", length = 10, nullable = false, unique = true)
@@ -18,4 +19,10 @@ public class Country extends AbstractEntityProperty {
     @Column(name = "country_name", length = 200, nullable = false, unique = true)
     @NonNull
     private String countryName;
+
+    public Country(String description, @NonNull String countryId, @NonNull String countryName) {
+        super(description);
+        this.countryId = countryId;
+        this.countryName = countryName;
+    }
 }

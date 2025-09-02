@@ -15,15 +15,12 @@ public class Service extends AbstractEntityProperty {
     @NonNull
     private String serviceName;
 
-    @Column(name = "service_description", length = 300, nullable = false)
-    private String serviceDescription;
-
-    @Column(name = "service_icon_url", length = 300, nullable = false)
+    @Column(name = "service_icon_url", length = 300)
     private String serviceIconUrl;
 
-    public Service(@NonNull String serviceName, String serviceDescription, String serviceIconUrl) {
+    public Service(String description, @NonNull String serviceName, String serviceIconUrl) {
+        super(description);
         this.serviceName = serviceName;
-        this.serviceDescription = serviceDescription;
         this.serviceIconUrl = serviceIconUrl;
     }
 }
