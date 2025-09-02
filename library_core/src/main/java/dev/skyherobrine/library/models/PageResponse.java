@@ -9,8 +9,9 @@ import java.util.List;
 @AllArgsConstructor
 public class PageResponse<S> {
     private List<S> data;
-    private Integer totalPages;
-    private Integer totalElements;
-    private Boolean hasNext;
-    private Boolean hasPrevious;
+    private Long totalPages;
+    private Long totalElements;
+    private Long currentPage;
+    private Long hasNext;
+    private Long hasPrevious;
 }
