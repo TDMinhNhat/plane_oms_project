@@ -12,6 +12,10 @@ import lombok.*;
 @NoArgsConstructor @RequiredArgsConstructor
 public class Facility extends AbstractEntityProperty {
 
+    @Column(name = "facility_id", length = 30, nullable = false, unique = true)
+    @NonNull
+    private String facilityId;
+
     @Column(name = "facility_name", length = 200, nullable = false, unique = true)
     @NonNull
     private String facilityName;
@@ -19,8 +23,9 @@ public class Facility extends AbstractEntityProperty {
     @Column(name = "facility_icon_url", length = 300)
     private String facilityIconUrl;
 
-    public Facility(String description, @NonNull String facilityName, String facilityIconUrl) {
+    public Facility(String description, @NonNull String facilityId, @NonNull String facilityName, String facilityIconUrl) {
         super(description);
+        this.facilityId = facilityId;
         this.facilityName = facilityName;
         this.facilityIconUrl = facilityIconUrl;
     }

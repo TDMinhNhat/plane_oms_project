@@ -9,6 +9,10 @@ import java.io.Serializable;
 public record FacilityDto(
 
         @NotBlank(message = "This property can not be null or empty")
+        @Size(max = 30, message = "Maximum length of this property is 30 characters")
+        String facilityId,
+
+        @NotBlank(message = "This property can not be null or empty")
         @Size(max = 200, message = "Maximum length of this property is 200 characters")
         String facilityName,
 
@@ -17,6 +21,6 @@ public record FacilityDto(
 ) implements Serializable {
 
     public Facility toObject() {
-        return new Facility(description, facilityName, null);
+        return new Facility(description, facilityId, facilityName, null);
     }
 }
