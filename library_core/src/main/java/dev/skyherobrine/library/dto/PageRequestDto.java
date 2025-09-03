@@ -2,6 +2,7 @@ package dev.skyherobrine.library.dto;
 
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.Map;
@@ -16,4 +17,12 @@ public record PageRequestDto(
 
         Map<String, Sort.Direction> sorts
 ) {
+
+    public Pageable getPageable() {
+        return Pageable.ofSize(this.size).withPage(this.page);
+    }
+
+    public Sort getSort() {
+        return Sort.by(sorts.keySet().stream().map(key -> new Sort.Order(sorts.get(key), key)).toList());
+    }
 }
