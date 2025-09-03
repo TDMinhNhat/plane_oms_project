@@ -8,6 +8,7 @@ import dev.skyherobrine.services.entity.Plane;
 import dev.skyherobrine.services.entity.PlaneFacility;
 import dev.skyherobrine.services.repository.*;
 import dev.skyherobrine.services.service.IPlaneService;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -74,6 +75,29 @@ public class PlaneService implements IPlaneService {
 
     @Override
     public PageResponse<Plane> findAll(PlaneQO filter) {
-        return null;
+        Page<Plane> result = planeRepository.getAllPlanes(
+                filter.planeId(),
+                filter.planeName(),
+                filter.countryId(),
+                filter.startWidthMeter(),
+                filter.endWidthMeter(),
+                filter.startHeightMeter(),
+                filter.endHeightMeter(),
+                filter.startCapacity(),
+                filter.endCapacity(),
+                filter.deleteFlag(),
+                filter.serviceNames(),
+                filter.facilityNames(),
+                filter.pageRequest().getPageable(),
+                filter.pageRequest().getSort()
+        );
+        return new PageResponse<>(
+                result.getContent(),
+                (long) result.getTotalPages(),
+                result.getTotalElements(),
+                (long) result.getNumber(),
+                result.hasNext(),
+                result.hasPrevious()
+        );
     }
 }

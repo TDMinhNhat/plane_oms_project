@@ -1,5 +1,6 @@
 package dev.skyherobrine.services.model.qo;
 
+import dev.skyherobrine.library.dto.PageRequestDto;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -41,7 +42,9 @@ public record PlaneQO(
 
         List<String> serviceNames,
 
-        List<String> facilityNames
+        List<String> facilityNames,
+
+        PageRequestDto pageRequest
 
 ) implements Serializable {
 }
