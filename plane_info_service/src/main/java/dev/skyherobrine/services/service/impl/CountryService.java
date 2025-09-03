@@ -45,16 +45,12 @@ public class CountryService implements ICountryService {
 
     @Override
     public PageResponse<Country> findAll(CountryFilterDto filter) {
-        List<Sort.Order> orders = new ArrayList<>();
-        filter.sorts().forEach((property, direction) -> {
-            orders.add(new Sort.Order(direction.getDirection(), property));
-        });
         Page<Country> result = countryRepository.getAllCountries(
                 filter.countryId(),
                 filter.countryName(),
                 filter.deleteFlag(),
-                Pageable.ofSize(filter.page().size()).withPage(filter.page().page()),
-                Sort.by(orders)
+                filter.page().getPageable(),
+                filter.page().getSort()
         );
 
         return new PageResponse<>(result.getContent(), (long) result.getTotalPages(), result.getTotalElements(), (long) result.getNumber(), result.hasNext(), result.hasPrevious());
