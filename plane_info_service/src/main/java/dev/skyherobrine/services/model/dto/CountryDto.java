@@ -1,9 +1,8 @@
-package dev.skyherobrine.services.dto;
+package dev.skyherobrine.services.model.dto;
 
-import dev.skyherobrine.services.model.Country;
+import dev.skyherobrine.services.entity.Country;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
 
 import java.io.Serializable;
 

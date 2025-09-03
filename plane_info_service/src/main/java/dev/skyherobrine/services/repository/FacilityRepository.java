@@ -1,6 +1,6 @@
 package dev.skyherobrine.services.repository;
 
-import dev.skyherobrine.services.model.Facility;
+import dev.skyherobrine.services.entity.Facility;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

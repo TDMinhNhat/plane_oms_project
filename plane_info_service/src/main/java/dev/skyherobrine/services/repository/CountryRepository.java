@@ -1,6 +1,6 @@
 package dev.skyherobrine.services.repository;
 
-import dev.skyherobrine.services.model.Country;
+import dev.skyherobrine.services.entity.Country;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface CountryRepository extends ListCrudRepository<Country, Long> {

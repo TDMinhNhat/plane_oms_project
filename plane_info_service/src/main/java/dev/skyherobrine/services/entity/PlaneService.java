@@ -1,22 +1,22 @@
-package dev.skyherobrine.services.model;
-
+package dev.skyherobrine.services.entity;
 
 import dev.skyherobrine.library.models.AbstractEntityProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "plane_images")
+@Table(name = "plane_services")
 @Getter @Setter
 @NoArgsConstructor @RequiredArgsConstructor
-public class PlaneImage extends AbstractEntityProperty {
+public class PlaneService extends AbstractEntityProperty {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plane_id", nullable = false)
     @NonNull
     private Plane plane;
 
-    @Column(name = "image_url", length = 300, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "service_id", nullable = false)
     @NonNull
-    private String imageUrl;
+    private Service service;
 }

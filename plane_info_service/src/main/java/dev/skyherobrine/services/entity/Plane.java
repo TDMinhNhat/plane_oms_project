@@ -1,4 +1,4 @@
-package dev.skyherobrine.services.model;
+package dev.skyherobrine.services.entity;
 
 import dev.skyherobrine.library.models.AbstractEntityProperty;
 import jakarta.persistence.*;
@@ -40,10 +40,8 @@ public class Plane extends AbstractEntityProperty {
     @NonNull
     private Integer capacity;
 
-    @Column(name = "description", length = 300)
-    private String description;
-
-    public Plane(@NonNull String planeId, @NonNull String planeName, String planeLogoUrl, @NonNull Country country, @NonNull BigDecimal widthMeter, @NonNull BigDecimal heightMeter, @NonNull Integer capacity, String description) {
+    public Plane(String description, @NonNull String planeId, @NonNull String planeName, String planeLogoUrl, @NonNull Country country, @NonNull BigDecimal widthMeter, @NonNull BigDecimal heightMeter, @NonNull Integer capacity) {
+        super(description);
         this.planeId = planeId;
         this.planeName = planeName;
         this.planeLogoUrl = planeLogoUrl;
@@ -51,6 +49,5 @@ public class Plane extends AbstractEntityProperty {
         this.widthMeter = widthMeter;
         this.heightMeter = heightMeter;
         this.capacity = capacity;
-        this.description = description;
     }
 }

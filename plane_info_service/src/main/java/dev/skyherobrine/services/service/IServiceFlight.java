@@ -1,8 +1,8 @@
 package dev.skyherobrine.services.service;
 
-import dev.skyherobrine.services.dto.ServiceDto;
-import dev.skyherobrine.services.dto.filter.ServiceFilterDto;
-import dev.skyherobrine.services.model.Service;
+import dev.skyherobrine.services.model.dto.ServiceDto;
+import dev.skyherobrine.services.model.qo.ServiceQO;
+import dev.skyherobrine.services.entity.Service;
 
-public interface IServiceFlight extends IManagement<ServiceDto, String, Service, ServiceFilterDto> {
+public interface IServiceFlight extends IManagement<ServiceDto, String, Service, ServiceQO> {
 }

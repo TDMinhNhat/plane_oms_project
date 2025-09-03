@@ -1,4 +1,4 @@
-package dev.skyherobrine.services.model;
+package dev.skyherobrine.services.entity;
 
 import dev.skyherobrine.library.models.AbstractEntityProperty;
 import jakarta.persistence.*;
@@ -19,8 +19,4 @@ public class PlaneFacility extends AbstractEntityProperty {
     @JoinColumn(name = "facility_id", nullable = false)
     @NonNull
     private Facility facility;
-
-    @Column(name = "description", length = 300, nullable = false)
-    @NonNull
-    private String description;
 }

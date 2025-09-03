@@ -1,6 +1,6 @@
-package dev.skyherobrine.services.dto;
+package dev.skyherobrine.services.model.dto;
 
-import dev.skyherobrine.services.model.Service;
+import dev.skyherobrine.services.entity.Service;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

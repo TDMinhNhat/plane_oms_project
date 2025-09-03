@@ -2,9 +2,9 @@ package dev.skyherobrine.services.service.impl;
 
 import dev.skyherobrine.library.exceptions.NotFoundException;
 import dev.skyherobrine.library.models.PageResponse;
-import dev.skyherobrine.services.dto.FacilityDto;
-import dev.skyherobrine.services.dto.filter.FacilityFilterDto;
-import dev.skyherobrine.services.model.Facility;
+import dev.skyherobrine.services.model.dto.FacilityDto;
+import dev.skyherobrine.services.model.qo.FacilityQO;
+import dev.skyherobrine.services.entity.Facility;
 import dev.skyherobrine.services.repository.FacilityRepository;
 import dev.skyherobrine.services.service.IFacilityService;
 import org.springframework.data.domain.Page;
@@ -39,7 +39,7 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public PageResponse<Facility> findAll(FacilityFilterDto filter) {
+    public PageResponse<Facility> findAll(FacilityQO filter) {
         Page<Facility> result = facilityRepository.getAllFacilities(
                 filter.facilityId(),
                 filter.facilityName(),

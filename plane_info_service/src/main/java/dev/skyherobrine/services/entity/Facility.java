@@ -1,4 +1,4 @@
-package dev.skyherobrine.services.model;
+package dev.skyherobrine.services.entity;
 
 import dev.skyherobrine.library.models.AbstractEntityProperty;
 import jakarta.persistence.Column;

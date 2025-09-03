@@ -1,4 +1,4 @@
-package dev.skyherobrine.services.dto.filter;
+package dev.skyherobrine.services.model.qo;
 
 import dev.skyherobrine.library.dto.PageRequestDto;
 import jakarta.validation.constraints.NotNull;
@@ -8,19 +8,21 @@ import org.springframework.data.domain.Sort;
 import java.io.Serializable;
 import java.util.Map;
 
-public record ServiceFilterDto(
+public record CountryQO(
 
         @Size(max = 30, message = "Maximum length of this property is 30 characters")
-        String serviceId,
+        String countryId,
 
         @Size(max = 200, message = "Maximum length of this property is 200 characters")
-        String serviceName,
+        String countryName,
 
         Boolean deleteFlag,
 
-        Map<String, Sort.Direction> sorts,
+        Map<String, Sort.Order> sorts,
 
         @NotNull(message = "This property can not be null or empty")
-        PageRequestDto pageRequest
+        PageRequestDto page
+
 ) implements Serializable {
+
 }

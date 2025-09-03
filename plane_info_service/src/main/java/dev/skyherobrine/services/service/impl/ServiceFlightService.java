@@ -2,9 +2,9 @@ package dev.skyherobrine.services.service.impl;
 
 import dev.skyherobrine.library.exceptions.NotFoundException;
 import dev.skyherobrine.library.models.PageResponse;
-import dev.skyherobrine.services.dto.ServiceDto;
-import dev.skyherobrine.services.dto.filter.ServiceFilterDto;
-import dev.skyherobrine.services.model.Service;
+import dev.skyherobrine.services.model.dto.ServiceDto;
+import dev.skyherobrine.services.model.qo.ServiceQO;
+import dev.skyherobrine.services.entity.Service;
 import dev.skyherobrine.services.repository.ServiceRepository;
 import dev.skyherobrine.services.service.IServiceFlight;
 import org.springframework.data.domain.Page;
@@ -38,7 +38,7 @@ public class ServiceFlightService implements IServiceFlight {
     }
 
     @Override
-    public PageResponse<Service> findAll(ServiceFilterDto filter) {
+    public PageResponse<Service> findAll(ServiceQO filter) {
         Page<Service> result = serviceRepository.getAllServices(
                 filter.serviceId(),
                 filter.serviceName(),
