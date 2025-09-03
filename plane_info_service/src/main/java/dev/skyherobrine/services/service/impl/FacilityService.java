@@ -44,7 +44,7 @@ public class FacilityService implements IFacilityService {
                 filter.facilityId(),
                 filter.facilityName(),
                 filter.deleteFlag(),
-                filter.pageRequest().getPage(),
+                filter.pageRequest().getPageable(),
                 filter.pageRequest().getSort()
         );
         return new PageResponse<Facility>(
