@@ -43,6 +43,10 @@ public class ServiceFlightService implements IServiceFlight {
                 filter.serviceId(),
                 filter.serviceName(),
                 filter.deleteFlag(),
+                filter.startCreatedDate(),
+                filter.endCreatedDate(),
+                filter.startUpdatedDate(),
+                filter.endUpdatedDate(),
                 filter.pageRequest().getPageable(),
                 filter.pageRequest().getSort()
         );

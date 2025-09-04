@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public record FacilityQO(
 
@@ -15,6 +16,14 @@ public record FacilityQO(
         String facilityName,
 
         Boolean deleteFlag,
+
+        Date startCreatedDate,
+
+        Date endCreatedDate,
+
+        Date startUpdatedDate,
+
+        Date endUpdatedDate,
 
         @NotNull(message = "This property can not be null or empty")
         PageRequestDto pageRequest

@@ -9,6 +9,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.ListPagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Date;
 import java.util.Optional;
 
 public interface ServiceRepository extends ListCrudRepository<Service, Long>, ListPagingAndSortingRepository<Service, Long> {
@@ -16,14 +17,20 @@ public interface ServiceRepository extends ListCrudRepository<Service, Long>, Li
 
     @Query("""
             SELECT s FROM Service s
-            WHERE s.serviceId IS NOT NULL AND s.serviceId = :serviceId
-            AND s.serviceName IS NOT NULL AND s.serviceName = :serviceName
-            AND s.deleteFlag IS NOT NULL AND s.deleteFlag = :deleteFlag
+            WHERE (:serviceId IS NULL OR s.serviceId = :serviceId)
+            AND (:serviceName IS NULL OR s.serviceName = :serviceName)
+            AND (:deleteFlag IS NULL OR s.deleteFlag = :deleteFlag)
+            AND (:startCreatedAt IS NULL OR :endCreatedAt IS NULL) OR (s.createdAt >= :startCreatedAt AND s.createdAt <= :endCreatedAt)
+            AND (:startUpdatedAt IS NULL OR :endUpdatedAt IS NULL) OR (s.updatedAt >= :startUpdatedAt AND s.updatedAt <= :endUpdatedAt)
         """)
     Page<Service> getAllServices(
             @Param("serviceId") String serviceId,
             @Param("serviceName") String serviceName,
             @Param("deleteFlag") Boolean deleteFlag,
+            @Param("startCreatedAt") Date startCreatedAt,
+            @Param("endCreatedAt") Date endCreatedAt,
+            @Param("startUpdatedAt") Date startUpdatedAt,
+            @Param("endUpdatedAt") Date endUpdatedAt,
             Pageable pageable,
             Sort sort);
 }

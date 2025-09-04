@@ -44,6 +44,10 @@ public class FacilityService implements IFacilityService {
                 filter.facilityId(),
                 filter.facilityName(),
                 filter.deleteFlag(),
+                filter.startCreatedDate(),
+                filter.endCreatedDate(),
+                filter.startUpdatedDate(),
+                filter.endUpdatedDate(),
                 filter.pageRequest().getPageable(),
                 filter.pageRequest().getSort()
         );

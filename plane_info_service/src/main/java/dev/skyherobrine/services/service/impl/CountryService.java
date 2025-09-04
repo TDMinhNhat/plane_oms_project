@@ -43,6 +43,10 @@ public class CountryService implements ICountryService {
                 filter.countryId(),
                 filter.countryName(),
                 filter.deleteFlag(),
+                filter.startCreatedDate(),
+                filter.endCreatedDate(),
+                filter.startUpdatedDate(),
+                filter.endUpdatedDate(),
                 filter.page().getPageable(),
                 filter.page().getSort()
         );

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 public record ServiceQO(
@@ -17,6 +18,14 @@ public record ServiceQO(
         String serviceName,
 
         Boolean deleteFlag,
+
+        Date startCreatedDate,
+
+        Date endCreatedDate,
+
+        Date startUpdatedDate,
+
+        Date endUpdatedDate,
 
         Map<String, Sort.Direction> sorts,
 

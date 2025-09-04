@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
 public record CountryQO(
@@ -17,6 +18,14 @@ public record CountryQO(
         String countryName,
 
         Boolean deleteFlag,
+
+        Date startCreatedDate,
+
+        Date endCreatedDate,
+
+        Date startUpdatedDate,
+
+        Date endUpdatedDate,
 
         Map<String, Sort.Order> sorts,
 
