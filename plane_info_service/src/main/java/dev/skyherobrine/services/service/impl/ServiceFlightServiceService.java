@@ -6,15 +6,15 @@ import dev.skyherobrine.services.model.dto.ServiceDto;
 import dev.skyherobrine.services.model.qo.ServiceQO;
 import dev.skyherobrine.services.entity.Service;
 import dev.skyherobrine.services.repository.ServiceRepository;
-import dev.skyherobrine.services.service.IServiceFlight;
+import dev.skyherobrine.services.service.IServiceFlightService;
 import org.springframework.data.domain.Page;
 
 @org.springframework.stereotype.Service
-public class ServiceFlightService implements IServiceFlight {
+public class ServiceFlightServiceService implements IServiceFlightService {
     
     private final ServiceRepository serviceRepository;
 
-    public ServiceFlightService(ServiceRepository serviceRepository) {
+    public ServiceFlightServiceService(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
     }
 

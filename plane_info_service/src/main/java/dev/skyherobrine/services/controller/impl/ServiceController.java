@@ -5,7 +5,8 @@ import dev.skyherobrine.services.controller.IManagementController;
 import dev.skyherobrine.services.model.dto.ServiceDto;
 import dev.skyherobrine.services.model.qo.ServiceQO;
 import dev.skyherobrine.services.entity.Service;
-import dev.skyherobrine.services.service.impl.ServiceFlightService;
+import dev.skyherobrine.services.service.IServiceFlightService;
+import dev.skyherobrine.services.service.impl.ServiceFlightServiceService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/plane-info/api/v1/service")
 public class ServiceController implements IManagementController<ServiceDto, String, Service, ServiceQO> {
 
-    private final ServiceFlightService serviceFlightService;
+    private final IServiceFlightService serviceFlightService;
 
-    public ServiceController(ServiceFlightService serviceFlightService) {
+    public ServiceController(ServiceFlightServiceService serviceFlightService) {
         this.serviceFlightService = serviceFlightService;
     }
 

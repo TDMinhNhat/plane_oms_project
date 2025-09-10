@@ -5,6 +5,7 @@ import dev.skyherobrine.services.controller.IManagementController;
 import dev.skyherobrine.services.model.dto.CountryDto;
 import dev.skyherobrine.services.model.qo.CountryQO;
 import dev.skyherobrine.services.entity.Country;
+import dev.skyherobrine.services.service.ICountryService;
 import dev.skyherobrine.services.service.impl.CountryService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("plane-info/api/v1/country")
 public class CountryController implements IManagementController<CountryDto, String, Country, CountryQO> {
 
-    private final CountryService countryService;
+    private final ICountryService countryService;
 
     public CountryController(CountryService countryService) {
         this.countryService = countryService;
