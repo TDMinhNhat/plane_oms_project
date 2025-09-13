@@ -23,7 +23,7 @@ public abstract class AbstractEntityProperty {
     @Column(name = "description", length = 300)
     private String description;
 
-    @Column(name = "delete_flag", nullable = false, columnDefinition = "DEFAULT 0")
+    @Column(name = "delete_flag", nullable = false, columnDefinition = "DEFAULT FALSE")
     private Boolean deleteFlag;
 
     @CreatedDate

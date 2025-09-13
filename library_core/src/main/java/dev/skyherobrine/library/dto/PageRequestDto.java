@@ -2,21 +2,27 @@ package dev.skyherobrine.library.dto;
 
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.Map;
 
-@Data
-@AllArgsConstructor
-public class PageRequestDto {
+public record PageRequestDto(
 
-    @PositiveOrZero(message = "The page number must be greater than or equal to 0")
-    private Integer page;
+        @PositiveOrZero(message = "The page number must be greater or equal to 0")
+        Integer page,
 
-    @Positive(message = "The size number must be greater than 0")
-    private Integer size;
+        @Positive(message = "The size number must be greater than 0")
+        Integer size,
 
-    private Map<String, Sort.Direction> sort;
+        Map<String, Sort.Direction> sorts
+) {
+
+    public Pageable getPageable() {
+        return Pageable.ofSize(this.size).withPage(this.page);
+    }
+
+    public Sort getSort() {
+        return Sort.by(sorts.keySet().stream().map(key -> new Sort.Order(sorts.get(key), key)).toList());
+    }
 }
